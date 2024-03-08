@@ -1,6 +1,25 @@
-import "@/styles/globals.css";
+import Layout from "@/components/Layout";
+import { theme } from "@/globalStyles";
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import { Hydrate, QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import type { AppProps } from "next/app";
 
+const queryClient = new QueryClient()
+
 export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+
+  return (
+    <ThemeProvider theme={theme}>
+      <QueryClientProvider client={queryClient}>
+        <Hydrate state={pageProps.dehydratedState}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </Hydrate>
+        {/* <ReactQueryDevtools initialIsOpen={false} position="bottom-left" /> */}
+      </QueryClientProvider>
+
+      <CssBaseline />
+    </ThemeProvider>
+  );
 }
