@@ -1,31 +1,33 @@
 import CustomCard from "@/components/UI/Card";
-import { CardActionArea, CardContent, Typography } from "@mui/material";
+import { CarOnFront } from "@/types";
+import {
+  CardActionArea,
+  CardContent,
+  CardMedia,
+  Typography,
+} from "@mui/material";
 
 interface CardCardProps {
-  //   image: string;
-  //   brand: string;
-  //   model: string;
-  //   color: string;
-  //   year: string;
-  //   engineType: string;
-  //   transmisson: string;
-  //   powerReserve?: string;
-  car: any;
+  car: CarOnFront;
 }
 
-export default function CarCard({car}: CardCardProps) {
+export default function CarCard({ car }: CardCardProps) {
+  const title = car.title;
+  const image = car.image;
   return (
-    <CustomCard sx={{ flex: '1 1 25%' }}>
-      <CardActionArea>
-        {/* <CardMedia
+    <CustomCard sx={{ flex: "1 1 25%", maxWidth: "400px" }}>
+      {image && (
+        <CardMedia
           component="img"
-          height="140"
-          image="/static/images/cards/contemplative-reptile.jpg"
+          height="200"
+          image={image}
           alt="green iguana"
-        /> */}
+        />
+      )}
+      <CardActionArea>
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            Lizard
+            {title}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             Lizards are a widespread group of squamate reptiles, with over 6,000

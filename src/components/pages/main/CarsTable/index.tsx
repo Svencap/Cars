@@ -1,31 +1,41 @@
 import Container from "@/components/UI/Container";
 import { Stack, Typography } from "@mui/material";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import CarCard from "./CarsList/CarCard";
 import CarsPaginator from "./CarsPaginator";
 import CarsFilter from "./CarsFilter";
+import useGetCars from "../../../../api/hooks/query/getCars";
+import { CarOnFront, Filter } from "@/types";
+import { CarsFromBack } from "@/api/types";
+import CarsList from "./CarsList";
 
 export default function CarsTable() {
-  const array = [0, 1, 2, 3, 4, 5, 6, 7, 8];
-  const cars = useMemo(() => {
-    return array.map((item) => <CarCard car="" key={item} />);
-  }, [array]);
+  const [totalCount, setTotalCount] = useState(0);
+  const [filters, setFilters] = useState<Filter>({
+    limit: 9,
+    offset: 0,
+  });
+  const { data, isLoading } = useGetCars(filters, {
+    onSuccess: (data: CarsFromBack) => {
+      const totalCount = data.totalCount ?? 0;
+      setTotalCount(totalCount);
+    },
+  });
+
+  function paginatorHandler(page: number, pageSize: number) {
+    const offset = (page - 1) * pageSize;
+    const limit = pageSize;
+    setFilters((prev) => ({ ...prev, offset, limit }));
+  }
+
   return (
     <Container>
       <CarsFilter />
-      <Stack
-        direction="row"
-        gap="20px"
-        flexWrap="wrap"
-        mt="20px"
-        justifyContent="center"
-      >
-        {cars}
-      </Stack>
+      <CarsList cars={data?.data || []} isLoading={isLoading} />
       <CarsPaginator
-        onPagination={() => {}}
-        pageSize={1}
-        totalCount={10}
+        onPagination={paginatorHandler}
+        pageSize={filters.limit || 9}
+        totalCount={totalCount}
         scrollTarget=""
       />
     </Container>
