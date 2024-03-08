@@ -3,6 +3,7 @@ import { Stack, Typography } from "@mui/material";
 import { useMemo } from "react";
 import CarCard from "./CarsList/CarCard";
 import CarsPaginator from "./CarsPaginator";
+import CarsFilter from "./CarsFilter";
 
 export default function CarsTable() {
   const array = [0, 1, 2, 3, 4, 5, 6, 7, 8];
@@ -11,11 +12,12 @@ export default function CarsTable() {
   }, [array]);
   return (
     <Container>
+      <CarsFilter />
       <Stack
         direction="row"
         gap="20px"
         flexWrap="wrap"
-        px="20px"
+        mt="20px"
         justifyContent="center"
       >
         {cars}
