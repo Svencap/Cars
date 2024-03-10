@@ -25,7 +25,6 @@ export default async function handler(
     } catch (error) {
       res.status(404).json({ status: "now found" });
     }
-    // res.status(200).json({ data });
   }
   res.status(200).json({ status: "ok" });
 }
