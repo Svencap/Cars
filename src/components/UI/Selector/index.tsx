@@ -26,7 +26,6 @@ const CustomSelector = styled(Select)(({ theme }) => ({
   "&.MuiOutlinedInput-root": {
     fontSize: "16px",
     height: "56px",
-    // backgroundColor: 'red',
     "&:hover fieldset": {
         borderColor: "black",
     },
@@ -41,10 +40,6 @@ const CustomSelector = styled(Select)(({ theme }) => ({
       border: "1px solid",
       borderColor: "black",
     },
-    // "&.Mui-error fieldset": {
-    //   border: "1px solid",
-    //   borderColor: theme.palette.subcolors.red,
-    // },
   },
 }));
 
@@ -61,12 +56,6 @@ const CustomMenuItem = styled(MenuItem)(({ theme }) => ({
       height: "32px",
       minHeight: "0px",
     },
-    // "&[aria-selected=true]": {
-    //   backgroundColor: theme.palette.brand.brand99,
-    // },
-    // "&:hover": {
-    //   backgroundColor: theme.palette.brand.brand92,
-    // },
   },
 }));
 
@@ -118,7 +107,7 @@ function Selector<T extends string>({
       >
         {variants.length > 0 ? (
           variants.map((variant, idx) => (
-            <CustomMenuItem key={idx} value={variant.value} {...variant.props}>
+            <CustomMenuItem key={idx} value={variant.value} {...variant.props} >
               {variant.text}
             </CustomMenuItem>
           ))
