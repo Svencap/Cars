@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import CarCard from "./CarsList/CarCard";
 import CarsPaginator from "./CarsPaginator";
 import CarsFilter from "./CarsFilter";
-import useGetCars from "../../../../api/hooks/query/getCars";
+import useGetCars from "../../../../api/hooks/query/cars/useGetCars";
 import { CarOnFront, Filter } from "@/types";
 import { CarsFromBack } from "@/api/types";
 import CarsList from "./CarsList";
@@ -14,6 +14,8 @@ export default function CarsTable() {
   const [filters, setFilters] = useState<Filter>({
     limit: 9,
     offset: 0,
+    color: "Любой",
+    brand: "Любой",
   });
   const { data, isLoading } = useGetCars(filters, {
     onSuccess: (data: CarsFromBack) => {
@@ -28,9 +30,13 @@ export default function CarsTable() {
     setFilters((prev) => ({ ...prev, offset, limit }));
   }
 
+  function onChangeFilter(filters: Filter) {
+    setFilters((prev) => ({ ...prev, ...filters }));
+  }
+
   return (
     <Container>
-      <CarsFilter />
+      <CarsFilter onChangeFilter={onChangeFilter} />
       <CarsList cars={data?.data || []} isLoading={isLoading} />
       <CarsPaginator
         onPagination={paginatorHandler}

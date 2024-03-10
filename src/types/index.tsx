@@ -3,6 +3,10 @@ export type Filter = {
   limit?: number;
   brand?: string;
   color?: string;
+  sort?: {
+    field?: string;
+    sort?: string;
+  };
 };
 
 export type CarOnFront = {

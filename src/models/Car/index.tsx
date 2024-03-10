@@ -10,6 +10,7 @@ const carSchema = new Schema({
   model: String,
   color: String,
   year: String,
+  price: Number,
   engineType: String,
   transmisson: String,
   powerReserve: String || undefined,

@@ -10,3 +10,11 @@ export type InfiniteQueryResult<T> = {
   nextPage: number;
   limit: number;
 };
+
+export type ColorsCarsFromBack = {
+  data: Array<{ color: string; readbleId: number }>;
+};
+
+export type ColorsModelsFromBack = {
+  data: Array<{ brand: string; readbleId: number }>;
+};
