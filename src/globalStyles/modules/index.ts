@@ -31,8 +31,6 @@ declare module "@mui/material/styles" {
   }
   interface PaletteOptions {
     brand: PaletteOptions["primary"];
-    dark: PaletteOptions["primary"];
-    subcolors: PaletteOptions["primary"];
   }
   interface PaletteColor {
     green_bg?: string;

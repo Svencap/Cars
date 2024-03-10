@@ -4,7 +4,6 @@ import {
   CarsFromBack,
   ColorsCarsFromBack,
   ColorsModelsFromBack,
-  InfiniteQueryResult,
 } from "../types";
 import { Filter } from "@/types";
 
@@ -31,9 +30,6 @@ export const getCars = async ({
       field: sort.field,
     }
   }
-  // if (sortByYear && sortByYear !== "Любой") {
-  //   filters.sortByYear = sortByYear;
-  // }
 
   try {
     const { data } = await instance.post<CarsFromBack>("/cars", filters);

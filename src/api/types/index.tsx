@@ -5,12 +5,6 @@ export type CarsFromBack = {
   totalCount: number;
 };
 
-export type InfiniteQueryResult<T> = {
-  data: T;
-  nextPage: number;
-  limit: number;
-};
-
 export type CarFromBack = {
   data: CarOnFront;
 };
