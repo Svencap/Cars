@@ -14,6 +14,7 @@ const carSchema = new Schema({
   engineType: String,
   transmisson: String,
   powerReserve: String || undefined,
+  readbleId: Number,
 });
 
 

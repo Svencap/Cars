@@ -1,5 +1,6 @@
 import { instance } from "..";
 import {
+  CarFromBack,
   CarsFromBack,
   ColorsCarsFromBack,
   ColorsModelsFromBack,
@@ -59,3 +60,13 @@ export const getModelsCars = async (): Promise<ColorsModelsFromBack> => {
     throw error;
   }
 };
+
+
+export const getDetailCar = async (id: string): Promise<CarFromBack> => {
+  try {
+    const { data } = await instance.get<CarFromBack>(`/cars/${id}`);
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}

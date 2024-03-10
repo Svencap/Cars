@@ -11,6 +11,10 @@ export type InfiniteQueryResult<T> = {
   limit: number;
 };
 
+export type CarFromBack = {
+  data: CarOnFront;
+};
+
 export type ColorsCarsFromBack = {
   data: Array<{ color: string; readbleId: number }>;
 };

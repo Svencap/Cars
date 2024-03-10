@@ -6,6 +6,7 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
+import { useRouter } from "next/router";
 
 interface CardCardProps {
   car: CarOnFront;
@@ -14,6 +15,12 @@ interface CardCardProps {
 export default function CarCard({ car }: CardCardProps) {
   const title = car.title;
   const image = car.image;
+  const id = car.readbleId
+  const { push } = useRouter()
+
+  function redirectToDetailCar() {
+    push(`/${id}`)
+  }
   return (
     <CustomCard sx={{ flex: "1 1 25%", maxWidth: "400px" }}>
       {image && (
@@ -24,7 +31,7 @@ export default function CarCard({ car }: CardCardProps) {
           alt="green iguana"
         />
       )}
-      <CardActionArea>
+      <CardActionArea onClick={redirectToDetailCar}>
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             {title}
