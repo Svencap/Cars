@@ -1,5 +1,5 @@
 import Container from "@/components/UI/Container";
-import { Box, IconButton, Stack, Button } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 function Header() {
   return (
     <Box
@@ -26,9 +26,7 @@ function Header() {
             alignItems="center"
             height="100%"
             justifyContent="flex-end"
-          >
-            <Button variant="dark_small">Войти</Button>
-          </Box>
+          ></Box>
         </Stack>
       </Container>
     </Box>

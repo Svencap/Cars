@@ -1,5 +1,4 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import mongoose from "mongoose";
 import CarModel from "../../../models/Car";
 import type { NextApiRequest, NextApiResponse } from "next";
 

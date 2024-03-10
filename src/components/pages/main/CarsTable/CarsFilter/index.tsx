@@ -3,7 +3,7 @@ import useGetModels from "@/api/hooks/query/models/useGetModels";
 import Selector from "@/components/UI/Selector";
 import useRemoveDuplicates from "@/hooks/useRemoveDuplicates";
 import { useSelectorOptions } from "@/hooks/useSelectorOptions";
-import { sortByPrice, sortByField } from "@/lib";
+import { sortByField } from "@/lib";
 import { Filter } from "@/types";
 import { Stack } from "@mui/material";
 import { useEffect, useState } from "react";
@@ -35,7 +35,6 @@ export default function CarsFilter({ onChangeFilter }: CarsFilterProps) {
   );
 
   function sortBy() {
-    const variants: any = [];
     return sortByField.map((variant) => ({
       value: variant.text,
       text: variant.id,
@@ -59,6 +58,7 @@ export default function CarsFilter({ onChangeFilter }: CarsFilterProps) {
     setFilters((prev) => ({
       ...prev,
       [key]: newValue,
+      offset: 0,
     }));
   }
 
@@ -71,7 +71,6 @@ export default function CarsFilter({ onChangeFilter }: CarsFilterProps) {
       <Selector
         variants={sortByYearSelectorOptions}
         label="Сортировка"
-        // onChange={(val) => filterChangeHandler("sort", val)}
       />
       <Selector
         variants={[{ text: "Любой", value: "Любой" }, ...modelsSelectorOptions]}

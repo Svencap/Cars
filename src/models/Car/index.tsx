@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 
-mongoose.connect("mongodb+srv://Svencap:Arhara256@cluster0.5x7b7kl.mongodb.net/testdb");
+mongoose.connect(process.env.MONGODB_URI as string);
 mongoose.Promise = global.Promise;
 
 const carSchema = new Schema({
@@ -14,6 +14,7 @@ const carSchema = new Schema({
   engineType: String,
   transmisson: String,
   powerReserve: String || undefined,
+  readbleId: Number,
 });
 
 

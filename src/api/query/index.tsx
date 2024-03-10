@@ -1,9 +1,9 @@
 import { instance } from "..";
 import {
+  CarFromBack,
   CarsFromBack,
   ColorsCarsFromBack,
   ColorsModelsFromBack,
-  InfiniteQueryResult,
 } from "../types";
 import { Filter } from "@/types";
 
@@ -30,9 +30,6 @@ export const getCars = async ({
       field: sort.field,
     }
   }
-  // if (sortByYear && sortByYear !== "Любой") {
-  //   filters.sortByYear = sortByYear;
-  // }
 
   try {
     const { data } = await instance.post<CarsFromBack>("/cars", filters);
@@ -59,3 +56,13 @@ export const getModelsCars = async (): Promise<ColorsModelsFromBack> => {
     throw error;
   }
 };
+
+
+export const getDetailCar = async (id: string): Promise<CarFromBack> => {
+  try {
+    const { data } = await instance.get<CarFromBack>(`/cars/${id}`);
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}

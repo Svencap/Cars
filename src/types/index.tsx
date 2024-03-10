@@ -19,4 +19,5 @@ export type CarOnFront = {
   engineType: string;
   transmisson: "Автоматическая" | "Ручная" | "Роботизированная";
   powerReserve: string;
+  readbleId: number
 };

@@ -1,11 +1,9 @@
 import Container from "@/components/UI/Container";
-import { Stack, Typography } from "@mui/material";
-import { useEffect, useMemo, useState } from "react";
-import CarCard from "./CarsList/CarCard";
+import { useState } from "react";
 import CarsPaginator from "./CarsPaginator";
 import CarsFilter from "./CarsFilter";
 import useGetCars from "../../../../api/hooks/query/cars/useGetCars";
-import { CarOnFront, Filter } from "@/types";
+import { Filter } from "@/types";
 import { CarsFromBack } from "@/api/types";
 import CarsList from "./CarsList";
 
@@ -42,7 +40,6 @@ export default function CarsTable() {
         onPagination={paginatorHandler}
         pageSize={filters.limit || 9}
         totalCount={totalCount}
-        scrollTarget=""
       />
     </Container>
   );
